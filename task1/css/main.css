@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     max-width: 48rem;
     margin: auto;
@@ -21,9 +26,10 @@ nav {
     padding: 0.5rem;
 }
 
-/*nav a {*/
-/*    text-decoration: none;*/
-/*}*/
+a {
+    text-decoration: none;
+    color: #33b5e5;
+}
 
 section {
     text-align: center;
@@ -51,5 +57,7 @@ img:hover {
 
 footer {
     text-align: center;
-    color: #444444;
+    color: #33b5e5;
+    padding: 1rem;
+    background-color: #eeeeee;
 }
