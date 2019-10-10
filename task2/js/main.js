@@ -1,9 +1,9 @@
 "use strict";
 
-let todoObjectsArray = [];
+let itemList = [];
 
 let initData = () => {
-  todoObjectsArray.push(
+  itemList.push(
     {
       title: "Learn JS",
       description: "Create a demo application for my TODO's",
@@ -26,15 +26,26 @@ let updateList = () => {
     displayList.removeChild(displayList.firstChild);
   }
 
-  for (let it in todoObjectsArray) {
+  for (let it in itemList) {
     let div = document.createElement("div");
     let content = document.createTextNode(
-      todoObjectsArray[it].title + " " + todoObjectsArray[it].description
+      itemList[it].title + " " + itemList[it].description
     );
 
     div.appendChild(content);
     displayList.appendChild(div);
   }
+};
+
+let addItem = () => {
+  let item = {
+    title: document.getElementById("inputTitle").value,
+    description: document.getElementById("inputDescription").value,
+    place: document.getElementById("inputPlace").value,
+    dueDate: document.getElementById("inputDate").value
+  };
+
+  itemList.push(item);
 };
 
 initData();
