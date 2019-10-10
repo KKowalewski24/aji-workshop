@@ -22,6 +22,21 @@ let initData = () => {
 let updateList = () => {
   let displayList = document.getElementById("displayList");
 
+  let deleteItem = (index) => {
+    itemList.splice(index, 1);
+  };
+
+  let prepareDeleteButton = (it) => {
+    let deleteButton = document.createElement("input");
+    deleteButton.type = "button";
+    deleteButton.value = "x";
+    deleteButton.addEventListener("click", () => {
+      deleteItem(it);
+    });
+
+    return deleteButton;
+  };
+
   while (displayList.firstChild) {
     displayList.removeChild(displayList.firstChild);
   }
@@ -32,7 +47,10 @@ let updateList = () => {
       itemList[it].title + " " + itemList[it].description
     );
 
+    let deleteButton = prepareDeleteButton(it);
+
     div.appendChild(content);
+    div.appendChild(deleteButton);
     displayList.appendChild(div);
   }
 };
