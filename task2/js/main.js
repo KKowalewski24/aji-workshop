@@ -1,22 +1,29 @@
 "use strict";
 
+const ITEMS = "items";
 let itemList = [];
 
 let initData = () => {
-  itemList.push(
-    {
-      title: "Learn JS",
-      description: "Create a demo application for my TODO's",
-      place: "445",
-      dueDate: new Date(2019, 10, 16)
-    },
-    {
-      title: "Lecture test",
-      description: "Quick test from the first three lectures",
-      place: "F6",
-      dueDate: new Date(2019, 10, 17)
-    }
-  );
+  let jsonList = window.localStorage.getItem(ITEMS);
+
+  if (jsonList != null) {
+    itemList = JSON.parse(jsonList);
+  } else {
+    itemList.push(
+      {
+        title: "Learn JS",
+        description: "Create a demo application for my TODO's",
+        place: "445",
+        dueDate: new Date(2019, 10, 16)
+      },
+      {
+        title: "Lecture test",
+        description: "Quick test from the first three lectures",
+        place: "F6",
+        dueDate: new Date(2019, 10, 17)
+      }
+    );
+  }
 };
 
 let updateList = () => {
@@ -64,6 +71,7 @@ let addItem = () => {
   };
 
   itemList.push(item);
+  window.localStorage.setItem(ITEMS, JSON.stringify(itemList));
 };
 
 initData();
