@@ -28,6 +28,7 @@ let initData = () => {
 
 let updateList = () => {
   let displayList = document.getElementById("displayList");
+  let inputSearch = document.getElementById("inputSearch");
 
   let deleteItem = (index) => {
     itemList.splice(index, 1);
@@ -50,15 +51,30 @@ let updateList = () => {
 
   for (let it in itemList) {
     let div = document.createElement("div");
+    let pElement = document.createElement("p");
+
     let content = document.createTextNode(
-      itemList[it].title + " " + itemList[it].description
+      itemList[it].title + " " + itemList[it].description + "\n"
     );
 
     let deleteButton = prepareDeleteButton(it);
 
+    //FIXME PROBABLY EXISTS ISSUE WITH DISPLAYING - TWO TIMES THE SAME DATA
+    if (inputSearch.value === ""
+      || itemList[it].title.includes(inputSearch.value)
+      || itemList[it].description.includes(inputSearch.value)) {
+
+      let content = document.createTextNode(
+        itemList[it].title + " " + itemList[it].description
+      );
+
+      pElement.appendChild(content);
+    }
+
     div.appendChild(content);
     div.appendChild(deleteButton);
     displayList.appendChild(div);
+    // displayList.appendChild(pElement);
   }
 };
 
