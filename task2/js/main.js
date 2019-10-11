@@ -15,7 +15,7 @@ let getJsonData = () => {
       'secret-key': FIREBASE_KEY
     },
     success: (data) => {
-      //PROTECT FROM ERROR - ASSIGN NULL TO itemList
+      //PROTECT FROM ERROR - ASSIGNING NULL TO itemList
       if (data != null) {
         itemList = data;
         console.log(data);
@@ -116,7 +116,6 @@ let updateList = () => {
 };
 
 /*------------------------ FUNCTION CALL ------------------------*/
-// initData();
 setInterval(updateList, 1000);
 getJsonData();
 
