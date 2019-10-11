@@ -41,14 +41,17 @@
   <body>
 
     <!-------------------- NAVBAR SECTION -------------------->
-    <nav class="navbar navbar-expand-lg navbar-dark blue">
-      <header class="navbar-brand">
+    <nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color lighten-1">
+      <header class="navbar-brand color">
         Schedule List
       </header>
 
       <form class="form-inline ml-auto">
         <div class="md-form my-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <input
+              class="form-control mr-sm-2" type="text"
+              id="inputSearch" placeholder="Search" aria-label="Search"
+          >
         </div>
       </form>
     </nav>
@@ -56,30 +59,38 @@
     <!-------------------- TABLE SECTION -------------------->
     <div id="displayList"></div>
 
-    <form>
-      <label>Title</label>
-      <input type="text" id="inputTitle"/>
+    <section class="card container">
+      <header class="card-body">
+        <h5 class="font-weight-bold mb-3">Add New Item</h5>
+      </header>
 
-      <label>Description</label>
-      <input type="text" id="inputDescription"/>
+      <form>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <input class="form-control" type="text" id="inputTitle" placeholder="Title"/>
+          </li>
 
-      <label>Place</label>
-      <input type="text" id="inputPlace"/>
+          <li class="list-group-item">
+            <input class="form-control" type="text"
+                   id="inputDescription" placeholder="Description"/>
+          </li>
 
-      <label>Due date</label>
-      <input type="date" id="inputDate"/>
+          <li class="list-group-item">
+            <input class="form-control" type="text" id="inputPlace" placeholder="Place"/>
+          </li>
 
-      <input type="button" value="add" onclick="addItem()"/>
+          <li class="list-group-item">
+            <input class="form-control" type="date" id="inputDate" placeholder="Due date"/>
+          </li>
+        </ul>
+      </form>
 
-      <div>
-        <label>Search</label>
-        <input type="text" id="inputSearch" placeholder="Type your search here..."/>
-      </div>
-    </form>
+      <input class="btn info-color white-text" type="button" value="add" onclick="addItem()"/>
+    </section>
 
     <!-------------------- FOOTER SECTION -------------------->
-    <footer class="page-footer font-small blue fixed-bottom">
-      <div class="footer-copyright text-center py-3">
+    <footer class="page-footer font-small info-color  fixed-bottom">
+      <div class="text-center py-3">
         Kamil Kowalewski All Rights Reserved
       </div>
     </footer>
