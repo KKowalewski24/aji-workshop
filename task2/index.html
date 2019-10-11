@@ -58,7 +58,7 @@
 
     <!-------------------- TABLE SECTION -------------------->
     <!--    <div id="displayList"></div>-->
-    <table class="table table-hover table-bordered text-center my-5 container">
+    <table class="table table-hover table-bordered text-center my-5 container" id="itemTable">
       <thead class="info-color white-text">
         <tr>
           <th>Title</th>
@@ -69,22 +69,11 @@
         </tr>
       </thead>
       <tbody>
-        <!--        <tr>-->
-        <!--          <th>n</th>-->
-        <!--          <th>h</th>-->
-        <!--          <th>f</th>-->
-        <!--          <th>b</th>-->
-        <!--        </tr>-->
-        <!--        <tr>-->
-        <!--          <th>n</th>-->
-        <!--          <th>h</th>-->
-        <!--          <th>f</th>-->
-        <!--          <th>b</th>-->
-        <!--        </tr>-->
       </tbody>
     </table>
 
-    <section class="card container mb-5">
+    <!--TODO MOVE INLINE STYLE TO CSS FILE-->
+    <section style="margin-bottom: 8rem !important;" class="card container">
       <header class="card-body">
         <h5 class="font-weight-bold mb-3">Add New Item</h5>
       </header>
@@ -116,7 +105,7 @@
     </section>
 
     <!-------------------- FOOTER SECTION -------------------->
-    <footer class="page-footer font-small info-color">
+    <footer class="page-footer font-small info-color fixed-bottom">
       <div class="text-center py-3">
         Kamil Kowalewski All Rights Reserved
       </div>

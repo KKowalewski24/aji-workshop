@@ -75,39 +75,54 @@ let prepareDeleteButton = (it) => {
 };
 
 let updateList = () => {
-  let displayList = $("#displayList");
+  // let displayList = $("#displayList");
   let inputSearch = $("#inputSearch");
+  let itemTable = $("#itemTable").find("tbody");
 
-  displayList.empty();
+  /*----- jQuery VERSION OF REMOVING FIRST CHILD -----*/
+  itemTable.empty();
 
   /*----- MAIN LOOP -----*/
   for (let it of itemList) {
-    let div = $("<div/>");
-    let pElement = $("<p/>");
-
-    let content = document.createTextNode(
-      it.title + " " + it.description + "\n"
-    );
-
-    let deleteButton = prepareDeleteButton(it);
-
-    //FIXME PROBABLY EXISTS ISSUE WITH DISPLAYING - TWO TIMES THE SAME DATA
-    if (inputSearch.value === ""
-      || it.title.includes(inputSearch.value)
-      || it.description.includes(inputSearch.value)) {
-
-      let content = document.createTextNode(
-        it.title + " " + it.description
-      );
-
-      pElement.append(content);
-    }
-
-    div.append(content);
-    div.append(deleteButton);
-    displayList.append(div);
-    // displayList.append(pElement);
+    itemTable.append(
+      "<tr>" +
+      "<td>" + it.title + "</td>" +
+      "<td>" + it.description + "</td>" +
+      "<td>" + it.place + "</td>" +
+      "<td>" + it.dueDate + "</td>" +
+      "</tr>"
+    )
+    ;
   }
+
+  // for (let it of itemList) {
+  //   let div = $("<div/>");
+  //   let pElement = $("<p/>");
+  //
+  //   let content = document.createTextNode(
+  //     it.title + " " + it.description + "\n"
+  //   );
+  //
+  //   let deleteButton = prepareDeleteButton(it);
+  //
+  //   //FIXME PROBABLY EXISTS ISSUE WITH DISPLAYING - TWO TIMES THE SAME DATA
+  //   if (inputSearch.value === ""
+  //     || it.title.includes(inputSearch.value)
+  //     || it.description.includes(inputSearch.value)) {
+  //
+  //     let content = document.createTextNode(
+  //       it.title + " " + it.description
+  //     );
+  //
+  //     pElement.append(content);
+  //   }
+  //
+  //   div.append(content);
+  //   div.append(deleteButton);
+  //   displayList.append(div);
+  //   // displayList.append(pElement);
+  // }
+
 };
 
 /*------------------------ FUNCTION CALL ------------------------*/
