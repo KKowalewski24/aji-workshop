@@ -48,10 +48,10 @@ let postJsonData = () => {
 /*------------------------ ADD ITEM ------------------------*/
 let addItem = () => {
   let item = {
-    title: document.getElementById("inputTitle").value,
-    description: document.getElementById("inputDescription").value,
-    place: document.getElementById("inputPlace").value,
-    dueDate: document.getElementById("inputDate").value
+    title: $("#inputTitle").val(),
+    description: $("#inputDescription").val(),
+    place: $("#inputPlace").val(),
+    dueDate: $("#inputDate").val()
   };
 
   itemList.push(item);
@@ -66,10 +66,8 @@ let deleteItem = (index) => {
 };
 
 let prepareDeleteButton = (it) => {
-  let deleteButton = document.createElement("input");
-  deleteButton.type = "button";
-  deleteButton.value = "x";
-  deleteButton.addEventListener("click", () => {
+  let deleteButton = $("<input type='button' value='x'/>");
+  deleteButton.click(() => {
     deleteItem(it);
   });
 
@@ -77,41 +75,38 @@ let prepareDeleteButton = (it) => {
 };
 
 let updateList = () => {
-  let displayList = document.getElementById("displayList");
-  let inputSearch = document.getElementById("inputSearch");
+  let displayList = $("#displayList");
+  let inputSearch = $("#inputSearch");
 
-  /*----- REMOVE CHILDS -----*/
-  while (displayList.firstChild) {
-    displayList.removeChild(displayList.firstChild);
-  }
+  displayList.empty();
 
   /*----- MAIN LOOP -----*/
-  for (let it in itemList) {
-    let div = document.createElement("div");
-    let pElement = document.createElement("p");
+  for (let it of itemList) {
+    let div = $("<div/>");
+    let pElement = $("<p/>");
 
     let content = document.createTextNode(
-      itemList[it].title + " " + itemList[it].description + "\n"
+      it.title + " " + it.description + "\n"
     );
 
     let deleteButton = prepareDeleteButton(it);
 
     //FIXME PROBABLY EXISTS ISSUE WITH DISPLAYING - TWO TIMES THE SAME DATA
     if (inputSearch.value === ""
-      || itemList[it].title.includes(inputSearch.value)
-      || itemList[it].description.includes(inputSearch.value)) {
+      || it.title.includes(inputSearch.value)
+      || it.description.includes(inputSearch.value)) {
 
       let content = document.createTextNode(
-        itemList[it].title + " " + itemList[it].description
+        it.title + " " + it.description
       );
 
-      pElement.appendChild(content);
+      pElement.append(content);
     }
 
-    div.appendChild(content);
-    div.appendChild(deleteButton);
-    displayList.appendChild(div);
-    // displayList.appendChild(pElement);
+    div.append(content);
+    div.append(deleteButton);
+    displayList.append(div);
+    // displayList.append(pElement);
   }
 };
 
@@ -142,3 +137,6 @@ getJsonData();
 //     );
 //   }
 // };
+
+// JS TO JQUERY
+// https://gist.github.com/joyrexus/7307312
