@@ -1,7 +1,6 @@
 "use strict";
 
 /*------------------------ VARIABLE ------------------------*/
-// const ITEMS = "items";
 const FIREBASE_LINK = "https://schedulelist-d5850.firebaseio.com/.json";
 const FIREBASE_KEY = "ihKtSAJNoNNsSLI4rdiVCcub5PuMeY5eIqnLGXpR";
 const FIREBASE_ACCESS_LINK = FIREBASE_LINK + "?auth=" + FIREBASE_KEY;
@@ -50,7 +49,6 @@ let addItem = () => {
   };
 
   itemList.push(item);
-  // window.localStorage.setItem(ITEMS, JSON.stringify(itemList));
   postJsonData();
 };
 
@@ -60,16 +58,6 @@ let deleteItem = (index) => {
   postJsonData();
 };
 
-// let prepareDeleteButton = (it) => {
-//   let deleteButton = $("<input type='button' value='x'/>");
-//   deleteButton.click(() => {
-//     deleteItem(it);
-//   });
-//
-//   return deleteButton;
-// };
-
-//TODO DELETING ITEMS - FUNCTION CALL IN INPUT
 let updateList = () => {
   // let displayList = $("#displayList");
   let inputSearch = $("#inputSearch");
@@ -126,30 +114,3 @@ let updateList = () => {
 /*------------------------ FUNCTION CALL ------------------------*/
 getJsonData();
 setInterval(updateList, 1000);
-
-/*----- LOCAL STORAGE DO NOT DELETE -----*/
-// let initData = () => {
-//   let jsonList = window.localStorage.getItem(ITEMS);
-//
-//   if (jsonList != null) {
-//     itemList = JSON.parse(jsonList);
-//   } else {
-//     itemList.push(
-//       {
-//         title: "Learn JS",
-//         description: "Create a demo application for my TODO's",
-//         place: "445",
-//         dueDate: new Date(2019, 10, 16)
-//       },
-//       {
-//         title: "Lecture test",
-//         description: "Quick test from the first three lectures",
-//         place: "F6",
-//         dueDate: new Date(2019, 10, 17)
-//       }
-//     );
-//   }
-// };
-
-// JS TO JQUERY
-// https://gist.github.com/joyrexus/7307312
