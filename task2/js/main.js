@@ -4,16 +4,14 @@
 // const ITEMS = "items";
 const FIREBASE_LINK = "https://schedulelist-d5850.firebaseio.com/.json";
 const FIREBASE_KEY = "ihKtSAJNoNNsSLI4rdiVCcub5PuMeY5eIqnLGXpR";
+const FIREBASE_ACCESS_LINK = FIREBASE_LINK + "?auth=" + FIREBASE_KEY;
 let itemList = [];
 
 /*------------------------ GET | POST ------------------------*/
 let getJsonData = () => {
   $.ajax({
-    url: FIREBASE_LINK,
+    url: FIREBASE_ACCESS_LINK,
     type: 'GET',
-    headers: {
-      'secret-key': FIREBASE_KEY
-    },
     success: (data) => {
       //PROTECT FROM ERROR - ASSIGNING NULL TO itemList
       if (data != null) {
@@ -29,11 +27,8 @@ let getJsonData = () => {
 
 let postJsonData = () => {
   $.ajax({
-    url: FIREBASE_LINK,
+    url: FIREBASE_ACCESS_LINK,
     type: 'PUT',
-    headers: {
-      'secret-key': FIREBASE_KEY
-    },
     contentType: 'application/json',
     data: JSON.stringify(itemList),
     success: (data) => {
@@ -74,6 +69,7 @@ let deleteItem = (index) => {
 //   return deleteButton;
 // };
 
+//TODO DELETING ITEMS - FUNCTION CALL IN INPUT
 let updateList = () => {
   // let displayList = $("#displayList");
   let inputSearch = $("#inputSearch");
@@ -128,8 +124,8 @@ let updateList = () => {
 };
 
 /*------------------------ FUNCTION CALL ------------------------*/
-setInterval(updateList, 1000);
 getJsonData();
+setInterval(updateList, 1000);
 
 /*----- LOCAL STORAGE DO NOT DELETE -----*/
 // let initData = () => {
