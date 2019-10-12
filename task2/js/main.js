@@ -87,7 +87,7 @@ let updateList = () => {
       "<td>" + it.place + "</td>" +
       "<td>" + it.dueDate + "</td>" +
       "<td>" +
-      "<input class='btn text-capitalize' type='button' value='delete'/>" +
+      "<input class='btn text-capitalize' type='button' value='delete' onclick='deleteItem()'/>" +
       "</td>" +
       "</tr>"
     );
