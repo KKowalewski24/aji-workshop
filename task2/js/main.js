@@ -1,7 +1,7 @@
 "use strict";
 
 /*------------------------ VARIABLE ------------------------*/
-const ITEMS = "items";
+// const ITEMS = "items";
 const FIREBASE_LINK = "https://schedulelist-d5850.firebaseio.com/.json";
 const FIREBASE_KEY = "ihKtSAJNoNNsSLI4rdiVCcub5PuMeY5eIqnLGXpR";
 let itemList = [];
@@ -55,7 +55,7 @@ let addItem = () => {
   };
 
   itemList.push(item);
-  window.localStorage.setItem(ITEMS, JSON.stringify(itemList));
+  // window.localStorage.setItem(ITEMS, JSON.stringify(itemList));
   postJsonData();
 };
 
@@ -65,14 +65,14 @@ let deleteItem = (index) => {
   postJsonData();
 };
 
-let prepareDeleteButton = (it) => {
-  let deleteButton = $("<input type='button' value='x'/>");
-  deleteButton.click(() => {
-    deleteItem(it);
-  });
-
-  return deleteButton;
-};
+// let prepareDeleteButton = (it) => {
+//   let deleteButton = $("<input type='button' value='x'/>");
+//   deleteButton.click(() => {
+//     deleteItem(it);
+//   });
+//
+//   return deleteButton;
+// };
 
 let updateList = () => {
   // let displayList = $("#displayList");
@@ -90,9 +90,11 @@ let updateList = () => {
       "<td>" + it.description + "</td>" +
       "<td>" + it.place + "</td>" +
       "<td>" + it.dueDate + "</td>" +
+      "<td>" +
+      "<input class='btn text-capitalize' type='button' value='delete'/>" +
+      "</td>" +
       "</tr>"
-    )
-    ;
+    );
   }
 
   // for (let it of itemList) {
