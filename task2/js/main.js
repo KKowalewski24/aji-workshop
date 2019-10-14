@@ -4,6 +4,14 @@
 const FIREBASE_LINK = "https://schedulelist-d5850.firebaseio.com/.json";
 const FIREBASE_KEY = "ihKtSAJNoNNsSLI4rdiVCcub5PuMeY5eIqnLGXpR";
 const FIREBASE_ACCESS_LINK = FIREBASE_LINK + "?auth=" + FIREBASE_KEY;
+
+const inputTitle = $("#inputTitle");
+const inputDescription = $("#inputDescription");
+const inputPlace = $("#inputPlace");
+const inputDate = $("#inputDate");
+const inputSearch = $("#inputSearch");
+const itemTable = $("#itemTable").find("tbody");
+
 let itemList = [];
 
 /*------------------------ GET | POST ------------------------*/
@@ -15,6 +23,7 @@ let getJsonData = () => {
       //PROTECT FROM ERROR - ASSIGNING NULL TO itemList
       if (data != null) {
         itemList = data;
+        updateList();
         console.log(data);
       }
     },
@@ -39,30 +48,35 @@ let postJsonData = () => {
   })
 };
 
+/*------------------------ CLEAR ADD ITEM FORM ------------------------*/
+let clearInputs = (...elements) => {
+  elements.forEach(it => $(it).val(""));
+};
+
 /*------------------------ ADD ITEM ------------------------*/
 let addItem = () => {
   let item = {
-    title: $("#inputTitle").val(),
-    description: $("#inputDescription").val(),
-    place: $("#inputPlace").val(),
-    dueDate: $("#inputDate").val()
+    title: inputTitle.val(),
+    description: inputDescription.val(),
+    place: inputPlace.val(),
+    dueDate: inputDate.val()
   };
+
+  clearInputs(inputTitle, inputDescription, inputPlace, inputDate);
 
   itemList.push(item);
   postJsonData();
+  updateList();
 };
 
 /*------------------------ UPDATE LIST ------------------------*/
 let deleteItem = (index) => {
   itemList.splice(index, 1);
   postJsonData();
+  updateList();
 };
 
 let updateList = () => {
-  // let displayList = $("#displayList");
-  let inputSearch = $("#inputSearch");
-  let itemTable = $("#itemTable").find("tbody");
-
   /*----- jQuery VERSION OF REMOVING FIRST CHILD -----*/
   itemTable.empty();
 
@@ -113,4 +127,5 @@ let updateList = () => {
 
 /*------------------------ FUNCTION CALL ------------------------*/
 getJsonData();
-setInterval(updateList, 1000);
+// updateList();
+// setInterval(updateList, 1000);
