@@ -79,7 +79,8 @@ let deleteItem = (index) => {
 let updateList = () => {
   /*----- jQuery VERSION OF REMOVING FIRST CHILD -----*/
   itemTable.empty();
-
+  
+  let i = 0;
   /*----- MAIN LOOP -----*/
   for (let it of itemList) {
     itemTable.append(
@@ -89,10 +90,11 @@ let updateList = () => {
       "<td>" + it.place + "</td>" +
       "<td>" + it.dueDate + "</td>" +
       "<td>" +
-      "<input class='btn text-capitalize' type='button' value='delete' onclick='deleteItem()'/>" +
+       "<input class='btn text-capitalize' type='button' value='delete' onclick='deleteItem("+i+")'/>" +
       "</td>" +
       "</tr>"
     );
+    i++;
   }
 
   // for (let it of itemList) {
