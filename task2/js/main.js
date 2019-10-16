@@ -80,13 +80,25 @@ let updateList = () => {
   /*----- jQuery VERSION OF REMOVING FIRST CHILD -----*/
   itemTable.empty();
 
+  let searchItemList = [];
+
+  let pattern = inputSearch.val();
+
   for (let it in itemList) {
+    if (pattern == "" ||
+      (itemList[it].title.includes(pattern)) ||
+      (itemList[it].description.includes(pattern))) {
+      searchItemList.push(itemList[it]);
+    }
+  }
+
+  for (let it in searchItemList) {
     itemTable.append(
       "<tr>" +
-      "<td>" + itemList[it].title + "</td>" +
-      "<td>" + itemList[it].description + "</td>" +
-      "<td>" + itemList[it].place + "</td>" +
-      "<td>" + itemList[it].dueDate + "</td>" +
+      "<td>" + searchItemList[it].title + "</td>" +
+      "<td>" + searchItemList[it].description + "</td>" +
+      "<td>" + searchItemList[it].place + "</td>" +
+      "<td>" + searchItemList[it].dueDate + "</td>" +
       "<td>" +
       "<input class='btn text-capitalize' type='button' value='delete' onclick='deleteItem(" + it + ")'/>" +
       "</td>" +
@@ -94,37 +106,7 @@ let updateList = () => {
     );
   }
 
-  // for (let it of itemList) {
-  //   let div = $("<div/>");
-  //   let pElement = $("<p/>");
-  //
-  //   let content = document.createTextNode(
-  //     it.title + " " + it.description + "\n"
-  //   );
-  //
-  //   let deleteButton = prepareDeleteButton(it);
-  //
-  //   //FIXME PROBABLY EXISTS ISSUE WITH DISPLAYING - TWO TIMES THE SAME DATA
-  //   if (inputSearch.value === ""
-  //     || it.title.includes(inputSearch.value)
-  //     || it.description.includes(inputSearch.value)) {
-  //
-  //     let content = document.createTextNode(
-  //       it.title + " " + it.description
-  //     );
-  //
-  //     pElement.append(content);
-  //   }
-  //
-  //   div.append(content);
-  //   div.append(deleteButton);
-  //   displayList.append(div);
-  //   // displayList.append(pElement);
-  // }
-
 };
 
 /*------------------------ FUNCTION CALL ------------------------*/
 getJsonData();
-// updateList();
-// setInterval(updateList, 1000);
