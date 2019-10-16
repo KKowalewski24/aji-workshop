@@ -11,6 +11,8 @@ const inputPlace = $("#inputPlace");
 const inputDate = $("#inputDate");
 const inputSearch = $("#inputSearch");
 const itemTable = $("#itemTable").find("tbody");
+const inputStartDate = $("#inputStartDate");
+const inputEndDate = $("#inputEndDate");
 
 let itemList = [];
 
@@ -77,17 +79,20 @@ let deleteItem = (index) => {
 };
 
 let updateList = () => {
+  let searchItemList = [];
+  let pattern = inputSearch.val();
+  let StartDate = new Date(inputStartDate.val()).getTime();
+  let EndDate = new Date(inputEndDate.val()).getTime();
+
   /*----- jQuery VERSION OF REMOVING FIRST CHILD -----*/
   itemTable.empty();
 
-  let searchItemList = [];
-
-  let pattern = inputSearch.val();
-
   for (let it in itemList) {
-    if (pattern == "" ||
-      (itemList[it].title.includes(pattern)) ||
-      (itemList[it].description.includes(pattern))) {
+    if ((pattern == ""
+      || itemList[it].title.includes(pattern)
+      || itemList[it].description.includes(pattern)) 
+      && (inputStartDate.val()=="" || StartDate<=new Date(itemList[it].dueDate).getTime())
+      && (inputEndDate.val()=="" || EndDate>=new Date(itemList[it].dueDate).getTime() )) {
       searchItemList.push(itemList[it]);
     }
   }
@@ -105,7 +110,6 @@ let updateList = () => {
       "</tr>"
     );
   }
-
 };
 
 /*------------------------ FUNCTION CALL ------------------------*/

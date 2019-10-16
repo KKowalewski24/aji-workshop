@@ -56,18 +56,18 @@
       </form>
     </nav>
 
-        <div class="input-group container ">
-          <input class="form-control" type="text">
-          <input class="form-control" type="text">
-          <div class="input-group-append">
-            <button class="btn btn-outline-info btn-md m-0 px-3 py-2" type="button" onclick="">
-              Search
-            </button>
-          </div>
-        </div>
+    <div class="input-group container mt-5 px-0">
+      <input class="form-control" type="date" id="inputStartDate">
+      <input class="form-control" type="date" id="inputEndDate">
+      <div class="input-group-append">
+        <input class="btn btn-outline-info btn-md m-0 px-3 py-2"
+               type="button" value="Search" onclick="updateList()"
+        />
+      </div>
+    </div>
 
     <!-------------------- TABLE SECTION -------------------->
-    <table class="table table-hover table-bordered text-center my-5 container" id="itemTable">
+    <table class="table table-hover table-bordered text-center mb-5 mt-2 container" id="itemTable">
       <thead class="info-color white-text">
         <tr>
           <th>Title</th>
