@@ -78,11 +78,11 @@ let deleteItem = (index) => {
   updateList();
 };
 
-let checkSearchString=(pattern,item)=>{
-  if(pattern == "" 
-    || item.title.includes(pattern) 
-    || item.description.includes(pattern)){
-      return true;
+let checkSearchString = (pattern, item) => {
+  if (pattern == ""
+    || item.title.includes(pattern)
+    || item.description.includes(pattern)) {
+    return true;
   }
 
   return false;
@@ -99,8 +99,8 @@ let updateList = () => {
 
   for (let it in itemList) {
     if (checkSearchString(pattern, itemList[it])
-        && (inputStartDate.val() == "" || StartDate <= new Date(itemList[it].dueDate).getTime())
-        && (inputEndDate.val() == "" || EndDate >= new Date(itemList[it].dueDate).getTime())) {
+      && (inputStartDate.val() == "" || StartDate <= new Date(itemList[it].dueDate).getTime())
+      && (inputEndDate.val() == "" || EndDate >= new Date(itemList[it].dueDate).getTime())) {
       searchItemList.push(itemList[it]);
     }
   }
