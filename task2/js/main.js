@@ -78,6 +78,30 @@ let deleteItem = (index) => {
   updateList();
 };
 
+let checkSearchString=(pattern,item)=>{
+  if(pattern == "" 
+    || item.title.includes(pattern) 
+    || item.description.includes(pattern)){
+      return true;
+  }
+
+  return false;
+};
+
+// let checkSearchDate=(inputDate, date, item, isStartDate)=>{
+//   if(isStartDate) {
+//     if(inputDate.val() == "" || date <= new Date(item.dueDate).getTime()) {
+//       return true;
+//     }
+//   } else {
+//     if(inputDate.val() == "" || date >= new Date(item.dueDate).getTime()) {
+//       return true;
+//     }
+//   }
+ 
+//   return false;
+// };
+
 let updateList = () => {
   let searchItemList = [];
   let pattern = inputSearch.val();
@@ -88,11 +112,9 @@ let updateList = () => {
   itemTable.empty();
 
   for (let it in itemList) {
-    if ((pattern == ""
-      || itemList[it].title.includes(pattern)
-      || itemList[it].description.includes(pattern)) 
-      && (inputStartDate.val()=="" || StartDate<=new Date(itemList[it].dueDate).getTime())
-      && (inputEndDate.val()=="" || EndDate>=new Date(itemList[it].dueDate).getTime() )) {
+    if (checkSearchString(pattern, itemList[it])
+        && (inputStartDate.val() == "" || StartDate <= new Date(itemList[it].dueDate).getTime())
+        && (inputEndDate.val() == "" || EndDate >= new Date(itemList[it].dueDate).getTime())) {
       searchItemList.push(itemList[it]);
     }
   }
