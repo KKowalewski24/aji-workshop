@@ -88,20 +88,6 @@ let checkSearchString=(pattern,item)=>{
   return false;
 };
 
-// let checkSearchDate=(inputDate, date, item, isStartDate)=>{
-//   if(isStartDate) {
-//     if(inputDate.val() == "" || date <= new Date(item.dueDate).getTime()) {
-//       return true;
-//     }
-//   } else {
-//     if(inputDate.val() == "" || date >= new Date(item.dueDate).getTime()) {
-//       return true;
-//     }
-//   }
- 
-//   return false;
-// };
-
 let updateList = () => {
   let searchItemList = [];
   let pattern = inputSearch.val();
