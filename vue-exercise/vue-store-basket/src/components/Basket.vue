@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered mt-5">
       <thead>
         <tr>
           <th>#</th>
@@ -17,21 +17,32 @@
           <td>{{it.description}}</td>
           <td>{{it.price}}</td>
           <td>
-            <input class="btn btn-add" type="button" value="Add" v-on:click="addItem()"/>
+            <input class="btn btn-add" type="button" value="Add" v-on:click="addItem(it)"/>
           </td>
         </tr>
       </tbody>
     </table>
 
-    <div class="card">
+    <div class="card my-4">
       <div class="card-body">
         <h5 class="card-title">Chosen Items</h5>
 
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Unit Price</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(it,cartId) in cart" :key="cartId">
+              <td>{{it.name}}</td>
+              <td>{{it.unitPrice}}</td>
+              <td>{{it.quantity}}</td>
+            </tr>
+          </tbody>
+        </table>
 
       </div>
     </div>
@@ -45,7 +56,7 @@
     data() {
       return {
         items: [
-          {name: "Audi RS6", description: "4.0 TFSI 600 HP", price: 150000,},
+          {name: "Audi RS6", description: "4.0 TFSI 600 HP", price: 150000},
           {name: "Mercedes E63s AMG", description: "4.0 612 HP", price: 170000},
           {name: "Volkswagen Golf R", description: "2.0 TSI 300 HP", price: 50000},
           {name: "Ford Focus RS", description: "2.3 EcoBoost 350 HP", price: 40000}
@@ -55,8 +66,17 @@
     },
 
     methods: {
-      addItem: function () {
-
+      addItem: function (item) {
+        //FIXME IMPROVE CONDITION
+        if (this.cart.includes(item)) {
+          this.cart.quantity += 1;
+        } else {
+          this.cart.push({
+            name: item.name,
+            unitPrice: item.price,
+            quantity: 1
+          });
+        }
       }
     },
 
@@ -65,16 +85,12 @@
 </script>
 
 <style scoped>
-  table {
-    margin-top: 2rem;
-  }
-
-  .btn-add {
+  thead {
     background-color: #33b5e5;
     color: #fff;
   }
 
-  thead {
+  .btn-add {
     background-color: #33b5e5;
     color: #fff;
   }
