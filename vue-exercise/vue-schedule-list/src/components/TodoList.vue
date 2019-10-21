@@ -1,28 +1,27 @@
 <template>
   <div>
-    <h1>
-      {{welcomeMessage}}
-    </h1>
     <h2>Todos:</h2>
     <p>
       You've completed {{completedTasks}} tasks!
     </p>
+
     <table>
-      <tr v-for="(todo,id) in todos" :key="id">
+      <tr v-for="(it,id) in todos" :key="id">
         <td>
-       <span v-if="todo.done">
-         <del>{{todo.text}}</del>
+       <span v-if="it.done">
+         <del>{{it.text}}</del>
        </span>
           <span v-else>
-         <b>{{todo.text}}</b>
+         <b>{{it.text}}</b>
        </span>
         </td>
-        <td>{{todo.done}}</td>
+        <td>{{it.done}}</td>
         <td>
-          <input type="button" value="change state" v-on:click="toggle(todo)"/>
+          <input type="button" value="change state" v-on:click="toggle(it)"/>
         </td>
       </tr>
     </table>
+
     <input type="text" v-model="newTodo" placeholder="Type Your todo here"/>
     <input type="button" value="Add todo" v-on:click="addTodo()"/>
   </div>
@@ -34,15 +33,12 @@
     data() {
       return {
         newTodo: "",
-        welcomeMessage: "Welcome in my app!",
         todos: [
           {text: "Learn JavaScript", done: false},
           {text: "Learn Vue", done: false},
           {text: "Play around in JSFiddle", done: true},
-          {text: "Build something awesome", done: true}, {
-            text: "Build something awesome",
-            done: true
-          }
+          {text: "Build something awesome", done: true},
+          {text: "Build something awesome", done: true}
         ]
       }
     },

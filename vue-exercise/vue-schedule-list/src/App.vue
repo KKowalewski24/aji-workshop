@@ -1,16 +1,19 @@
 <template>
   <div id="app">
-    <Todo/>
+    <Header msg="Welcome in my app!"/>
+    <TodoList/>
   </div>
 </template>
 
 <script>
-  import Todo from "./components/TodoList";
+  import TodoList from "./components/TodoList";
+  import Header from "./components/Header";
 
   export default {
     name: 'app',
     components: {
-      Todo
+      Header: Header,
+      TodoList: TodoList
     }
   }
 </script>
@@ -22,7 +25,7 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #fff;
-    margin-top: 60px;
+    margin-top: 20px;
     border-radius: 4px;
     padding: 20px;
     transition: all 0.2s;
