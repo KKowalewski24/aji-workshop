@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container">
     <table class="table table-striped table-bordered">
       <thead>
         <tr>
@@ -17,11 +17,24 @@
           <td>{{it.description}}</td>
           <td>{{it.price}}</td>
           <td>
-            <input class="btn btn-add" type="button" value="Add"/>
+            <input class="btn btn-add" type="button" value="Add" v-on:click="addItem()"/>
           </td>
         </tr>
       </tbody>
     </table>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Chosen Items</h5>
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Cras justo odio</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+
+      </div>
+    </div>
   </div>
 </template>
 
@@ -32,7 +45,7 @@
     data() {
       return {
         items: [
-          {name: "Audi RS6", description: "4.0 TFSI 600 HP", price: 150000},
+          {name: "Audi RS6", description: "4.0 TFSI 600 HP", price: 150000,},
           {name: "Mercedes E63s AMG", description: "4.0 612 HP", price: 170000},
           {name: "Volkswagen Golf R", description: "2.0 TSI 300 HP", price: 50000},
           {name: "Ford Focus RS", description: "2.3 EcoBoost 350 HP", price: 40000}
@@ -41,7 +54,13 @@
       }
     },
 
-    methods: {}
+    methods: {
+      addItem: function () {
+
+      }
+    },
+
+    computed: {}
   }
 </script>
 
