@@ -41,6 +41,16 @@
               <td>{{it.unitPrice}}</td>
               <td>{{it.quantity}}</td>
             </tr>
+            <!--            <tr v-if="cart.length">-->
+            <!--              <td>-->
+            <!--                {{calculateTotalPrice(this.cart)}}-->
+            <!--              </td>-->
+            <!--            </tr>-->
+            <!--            <tr v-else>-->
+            <!--              <td class="empty-card">-->
+            <!--                Empty Cart-->
+            <!--              </td>-->
+            <!--            </tr>-->
           </tbody>
         </table>
 
@@ -80,7 +90,14 @@
       }
     },
 
-    computed: {}
+    computed: {
+      // calculateTotalPrice: function (cartItems) {
+      //   let totalPrice = 0;
+      //   cartItems.forEach(it => totalPrice += it.unitPrice + it.quantity);
+      //
+      //   return totalPrice;
+      // }
+    }
   }
 </script>
 
@@ -93,5 +110,9 @@
   .btn-add {
     background-color: #33b5e5;
     color: #fff;
+  }
+
+  .empty-card {
+    color: #ff3547;
   }
 </style>
