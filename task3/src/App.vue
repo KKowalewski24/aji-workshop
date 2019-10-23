@@ -1,49 +1,21 @@
 <template>
   <div id="app">
+    <Navbar msg="Film Website"/>
 
-    <!--Navbar-->
-    <mdb-navbar expand="xl" hamburger togglerIcon="paper-plane" far dark
-                color="mdb-color">
-      <!-- Navbar brand -->
-      <mdb-navbar-brand class="text-white">Navbar</mdb-navbar-brand>
-<!--      <mdb-navbar-toggler>-->
-<!--        <mdb-navbar-nav right>-->
-<!--          <mdb-nav-item href="#" waves-fixed>Home</mdb-nav-item>-->
-<!--          <mdb-nav-item href="#" waves-fixed>Features</mdb-nav-item>-->
-<!--          <mdb-nav-item href="#" waves-fixed>Pricing</mdb-nav-item>-->
-<!--        </mdb-navbar-nav>-->
-<!--      </mdb-navbar-toggler>-->
-    </mdb-navbar>
-    <!--/.Navbar-->
-
+    <Footer msg="Kamil Kowalewski Applications in Interpreted Languages"/>
   </div>
 </template>
 
 <script>
-  import {
-    mdbNavbar,
-    // mdbNavItem,
-    // mdbNavbarNav,
-    // mdbNavbarToggler,
-    // mdbContainer,
-    // mdbRow,
-    // mdbInput,
-    mdbNavbarBrand,
-    // mdbIcon
-  } from 'mdbvue';
+  import Navbar from "./components/Navbar";
+  import Footer from "./components/Footer";
 
   export default {
     name: 'app',
     components: {
-      mdbNavbar,
-      // mdbNavItem,
-      // mdbNavbarNav,
-      // mdbNavbarToggler,
-      // mdbContainer,
-      // mdbRow,
-      // mdbInput,
-      mdbNavbarBrand,
-      // mdbIcon
+      Footer,
+      Navbar
+
     }
   }
 </script>
