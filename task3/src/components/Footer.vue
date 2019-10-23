@@ -1,5 +1,5 @@
 <template>
-  <mdb-footer class="fixed-bottom font-small mt-4" color="mdb-color">
+  <mdb-footer class="font-small mt-4" color="mdb-color">
     <div class="text-center py-3">
       <mdb-container fluid>
         &copy; {{msg}}
