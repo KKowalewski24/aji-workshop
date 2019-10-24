@@ -10,20 +10,8 @@
         </tr>
       </mdb-tbl-head>
       <mdb-tbl-body>
-        <tr>
-          <th>Title</th>
-          <th>Production Year</th>
-          <th>Cast</th>
-          <th>Genres</th>
-        </tr>
-        <tr>
-          <th>Title</th>
-          <th>Production Year</th>
-          <th>Cast</th>
-          <th>Genres</th>
-        </tr>
-        <tr>
-          <th>Title</th>
+        <tr v-for="(it,itemId) in jsonData" :key="itemId">
+          <th></th>
           <th>Production Year</th>
           <th>Cast</th>
           <th>Genres</th>
@@ -44,6 +32,9 @@
       mdbTblHead,
       mdbBtn,
       mdbTblBody
+    },
+    props: {
+      jsonData: []
     }
   }
 </script>

@@ -14,9 +14,11 @@
 </template>
 
 <script>
-  import Navbar from "./components/Navbar";
-  import Footer from "./components/Footer";
-  import SearchMovie from "./components/SearchMovie";
+  import json from "./data/movies.json";
+  import Navbar from "./components/util/Navbar";
+  import Footer from "./components/util/Footer"
+
+  import SearchMovie from "./components/search/SearchMovie";
   import MovieTable from "./components/MovieTable";
   import GenreMovieTable from "./components/GenreMovieTable";
   import CastMovieTable from "./components/CastMovieTable";
@@ -30,6 +32,11 @@
       SearchMovie,
       Footer,
       Navbar
+    },
+    data() {
+      return {
+        moviesData: json
+      }
     }
   }
 </script>
