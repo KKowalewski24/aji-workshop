@@ -10,15 +10,17 @@
         </tr>
       </mdb-tbl-head>
       <mdb-tbl-body>
-        <tr v-for="(it,itemId) in jsonData" :key="itemId">
-          <th></th>
-          <th>Production Year</th>
-          <th>Cast</th>
-          <th>Genres</th>
+        <tr v-for="it in tableSize" :key="it">
+          <th>{{jsonData[it].title}}</th>
+          <th>{{jsonData[it].year}}</th>
+          <th>{{jsonData[it].cast.toString().split(",").join("\n")}}</th>
+          <th>{{jsonData[it].genres.toString().split(",").join("\n")}}</th>
         </tr>
       </mdb-tbl-body>
     </mdb-tbl>
-    <mdb-btn class="btn-block m-0" color="mdb-color">Load Next</mdb-btn>
+    <mdb-btn class="btn-block m-0" color="mdb-color" v-on:onclick="expandTable()">
+      Load Next
+    </mdb-btn>
   </div>
 </template>
 
@@ -34,7 +36,17 @@
       mdbTblBody
     },
     props: {
-      jsonData: []
+      jsonData: Array
+    },
+    data() {
+      return {
+        tableSize: 10,
+      }
+    },
+    methods: {
+      expandTable: function () {
+        this.tableSize += 10;
+      }
     }
   }
 </script>

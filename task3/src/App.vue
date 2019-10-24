@@ -4,7 +4,7 @@
 
     <div class="container">
       <SearchMovie/>
-      <MovieTable/>
+      <MovieTable :jsonData="moviesData"/>
       <GenreMovieTable/>
       <CastMovieTable/>
     </div>
@@ -14,6 +14,7 @@
 </template>
 
 <script>
+  // import _ from "lodash";
   import json from "./data/movies.json";
   import Navbar from "./components/util/Navbar";
   import Footer from "./components/util/Footer"
