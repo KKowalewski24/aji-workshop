@@ -1,22 +1,15 @@
 <template>
-  <mdb-footer class="font-small mt-4" color="mdb-color">
-    <div class="text-center py-3">
-      <mdb-container fluid>
-        &copy; {{msg}}
-      </mdb-container>
+  <footer class="page-footer mdb-color font-small mt-4">
+    <div class="container-fluid footer-copyright text-center py-3">
+      &copy; {{msg}}
     </div>
-  </mdb-footer>
+  </footer>
 </template>
 
 <script>
-  import {mdbFooter, mdbContainer} from 'mdbvue';
-
   export default {
     name: "Footer",
-    components: {
-      mdbFooter,
-      mdbContainer,
-    },
+    components: {},
     props: {
       msg: String
     }

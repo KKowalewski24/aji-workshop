@@ -27,12 +27,12 @@
   export default {
     name: 'app',
     components: {
-      CastMovieTable,
-      GenreMovieTable,
-      MovieTable,
-      SearchMovie,
+      Navbar,
       Footer,
-      Navbar
+      SearchMovie,
+      MovieTable,
+      CastMovieTable,
+      GenreMovieTable
     },
     data() {
       return {
