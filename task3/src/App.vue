@@ -2,11 +2,12 @@
   <div id="app">
     <Navbar msg="Film Website"/>
 
-    <div class="container">
+    <div class="container-fluid">
       <SearchMovie/>
-      <MovieTable :jsonData="moviesData"/>
-      <GenreMovieTable/>
-      <CastMovieTable/>
+      <MovieTable :jsonData="fullMoviesData"/>
+      <GenreMovieTable :jsonData="fullMoviesData"/>
+      <!--      <GenreMovieTable :jsonData="sample"/>-->
+      <CastMovieTable :jsonData="trimmedMoviesData"/>
     </div>
 
     <Footer msg="Kamil Kowalewski Applications in Interpreted Languages"/>
@@ -14,7 +15,8 @@
 </template>
 
 <script>
-  // import _ from "lodash";
+  import _ from "lodash";
+  // import samplejson from "./data/sample.json";
   import json from "./data/movies.json";
   import Navbar from "./components/util/Navbar";
   import Footer from "./components/util/Footer"
@@ -36,7 +38,9 @@
     },
     data() {
       return {
-        moviesData: json
+        // sample: samplejson,
+        fullMoviesData: json,
+        trimmedMoviesData: _.slice(json, 0, 99)
       }
     }
   }
