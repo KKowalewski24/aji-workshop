@@ -10,8 +10,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="text-center" v-for="it in tableSize" :key="it">
-          <th>{{jsonData[it].title}}</th>
+        <!--INDEX IS ONLY BECAUSE FIRST VALUE RECEIVES COUNTING FROM 1 AND IT IS COUNTED FROM 0-->
+        <tr class="text-center" v-for="(index,it) in tableSize" :key="it">
+          <th>{{it+jsonData[it].title}}</th>
           <th>{{jsonData[it].year}}</th>
           <th>{{jsonData[it].cast.toString().split(",").join("\n")}}</th>
           <th>{{jsonData[it].genres.toString().split(",").join("\n")}}</th>
@@ -25,6 +26,8 @@
 </template>
 
 <script>
+  const INITIAL_TABLE_SIZE = 10;
+
   export default {
     name: "MovieTable",
     components: {},
@@ -32,11 +35,11 @@
       jsonData: Array,
     },
     data() {
-      let tableSize = 10;
-      if (this.jsonData.length < 10) {
-        tableSize = this.jsonData.length - 1;
+      let tableSize = INITIAL_TABLE_SIZE;
+      if (this.jsonData.length < INITIAL_TABLE_SIZE) {
+        tableSize = this.jsonData.length;
       } else {
-        tableSize = 10;
+        tableSize = INITIAL_TABLE_SIZE;
       }
 
       return {
@@ -45,10 +48,10 @@
     },
     methods: {
       expandTable: function () {
-        if ((this.jsonData.length - 1 + 10) < this.tableSize) {
-          this.tableSize = this.jsonData.length - 1;
+        if (this.jsonData.length + INITIAL_TABLE_SIZE < this.tableSize) {
+          this.tableSize = this.jsonData.length;
         } else {
-          this.tableSize += 10;
+          this.tableSize += INITIAL_TABLE_SIZE;
         }
       }
     }
