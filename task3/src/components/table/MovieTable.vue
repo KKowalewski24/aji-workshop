@@ -29,22 +29,27 @@
     name: "MovieTable",
     components: {},
     props: {
-      jsonData: Array
+      jsonData: Array,
     },
     data() {
-      let tableSize;
+      let tableSize = 10;
       if (this.jsonData.length < 10) {
-        tableSize = this.jsonData.length;
+        tableSize = this.jsonData.length - 1;
       } else {
         tableSize = 10;
       }
+
       return {
         tableSize
       }
     },
     methods: {
       expandTable: function () {
-        this.tableSize += 10;
+        if ((this.jsonData.length - 1 + 10) < this.tableSize) {
+          this.tableSize = this.jsonData.length - 1;
+        } else {
+          this.tableSize += 10;
+        }
       }
     }
   }
