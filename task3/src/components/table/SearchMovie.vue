@@ -3,21 +3,21 @@
     <div class="card-body">
       <li class="list-group">
         <ul class="list-group-item">
-          <input type="text" id=inputTitle class="form-control" placeholder="Title"/>
+          <input type="text" v-model="properties.title" class="form-control" placeholder="Title"/>
         </ul>
 
         <ul class="list-group-item">
-          <input type="text" id=inputProductionFrom class="form-control"
+          <input type="text" v-model="properties.dateFrom" class="form-control"
                  placeholder="Production year from:"/>
         </ul>
 
         <ul class="list-group-item">
-          <input type="text" id=inputProductionTo class="form-control"
+          <input type="text" v-model="properties.dateTo" class="form-control"
                  placeholder="Production year to:"/>
         </ul>
 
         <ul class="list-group-item">
-          <input type="text" id="inputCast" class="form-control" placeholder="Cast"/>
+          <input type="text" v-model="properties.cast" class="form-control" placeholder="Cast"/>
         </ul>
 
         <button class="btn mdb-color white-text m-0">Search</button>
@@ -30,7 +30,7 @@
   export default {
     name: "SearchMovie",
     props: {
-      searchProperties: Function
+      properties: Object
     }
   }
 </script>
