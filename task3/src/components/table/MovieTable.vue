@@ -10,9 +10,10 @@
         </tr>
       </thead>
       <tbody>
-        <!--INDEX IS ONLY BECAUSE FIRST VALUE RECEIVES COUNTING FROM 1 AND IT IS COUNTED FROM 0-->
+        <!--INDEX IS ONLY BECAUSE FIRST VALUE RECEIVES COUNTING
+        FROM 1 AND SECOND VALUE IS COUNTED FROM 0-->
         <tr class="text-center" v-for="(index,it) in tableSize" :key="it">
-          <th>{{it+jsonData[it].title}}</th>
+          <th>{{jsonData[it].title}}</th>
           <th>{{jsonData[it].year}}</th>
           <th>{{jsonData[it].cast.toString().split(",").join("\n")}}</th>
           <th>{{jsonData[it].genres.toString().split(",").join("\n")}}</th>
