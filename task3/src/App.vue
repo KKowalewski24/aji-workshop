@@ -3,10 +3,8 @@
     <Navbar msg="Film Website"/>
 
     <div class="container">
-      <SearchMovie/>
-      <MovieTable :jsonData="fullMoviesData"/>
-      <GenreMovieList :jsonData="fullMoviesData"/>
-      <CastMovieList :jsonData="fullMoviesData"/>
+      <Table :fullJsonData="fullMoviesData"/>
+      <List :fullJsonData="fullMoviesData"/>
     </div>
 
     <Footer msg="Kamil Kowalewski Applications in Interpreted Languages"/>
@@ -14,26 +12,20 @@
 </template>
 
 <script>
-  // import _ from "lodash";
   // import samplejson from "./data/sample.json";
   import json from "./data/movies.json";
   import Navbar from "./components/util/Navbar";
+  import Table from "./components/Table";
+  import List from "./components/List";
   import Footer from "./components/util/Footer"
-
-  import SearchMovie from "./components/search/SearchMovie";
-  import MovieTable from "./components/MovieTable";
-  import GenreMovieList from "./components/GenreMovieList";
-  import CastMovieList from "./components/CastMovieList";
 
   export default {
     name: 'app',
     components: {
+      List,
+      Table,
       Navbar,
       Footer,
-      SearchMovie,
-      MovieTable,
-      CastMovieList,
-      GenreMovieList
     },
     data() {
       return {
