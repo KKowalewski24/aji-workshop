@@ -20,7 +20,9 @@
           <input type="text" v-model="properties.cast" class="form-control" placeholder="Cast"/>
         </ul>
 
-        <button class="btn mdb-color white-text m-0">Search</button>
+        <button v-on:click="searchItems()" class="btn mdb-color white-text m-0">
+          Search
+        </button>
       </li>
     </div>
   </div>
@@ -30,7 +32,8 @@
   export default {
     name: "SearchMovie",
     props: {
-      properties: Object
+      properties: Object,
+      searchItems: Function
     }
   }
 </script>

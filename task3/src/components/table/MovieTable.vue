@@ -18,8 +18,7 @@
         </tr>
       </tbody>
     </table>
-    <!--    FIXME BUTTON SHOULD ADD 10 TO TABLESIZE AND RENDER TABLE -->
-    <button class="btn btn-block mdb-color white-text m-0" v-on:onclick="expandTable()">
+    <button class="btn btn-block mdb-color white-text m-0" v-on:click="expandTable()">
       Load Next
     </button>
   </div>
@@ -33,8 +32,14 @@
       jsonData: Array
     },
     data() {
+      let tableSize;
+      if (this.jsonData.length < 10) {
+        tableSize = this.jsonData.length;
+      } else {
+        tableSize = 10;
+      }
       return {
-        tableSize: 10,
+        tableSize
       }
     },
     methods: {

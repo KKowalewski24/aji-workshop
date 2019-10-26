@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SearchMovie :properties="searchProperties"/>
+    <SearchMovie :properties="searchProperties" :searchItems="searchMovies"/>
     <MovieTable :jsonData="fullJsonData"/>
   </div>
 </template>
@@ -26,6 +26,11 @@
           dateTo: "",
           cast: ""
         }
+      }
+    },
+    methods: {
+      searchMovies: function () {
+
       }
     }
   }
