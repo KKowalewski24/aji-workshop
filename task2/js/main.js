@@ -78,8 +78,22 @@ let deleteItem = (index) => {
   updateList();
 };
 
+let isEmptyString = (msg, jquery) => {
+  if (jquery) {
+    if ($(msg).val() === "") {
+      return true;
+    }
+  } else {
+    if (msg === "") {
+      return true;
+    }
+
+  }
+  return false;
+};
+
 let checkSearchString = (pattern, item) => {
-  if (pattern == ""
+  if (isEmptyString(pattern, false)
     || item.title.includes(pattern)
     || item.description.includes(pattern)) {
     return true;
@@ -99,8 +113,10 @@ let updateList = () => {
 
   for (let it in itemList) {
     if (checkSearchString(pattern, itemList[it])
-      && (inputStartDate.val() == "" || StartDate <= new Date(itemList[it].dueDate).getTime())
-      && (inputEndDate.val() == "" || EndDate >= new Date(itemList[it].dueDate).getTime())) {
+      && (isEmptyString(inputStartDate, true)
+        || StartDate <= new Date(itemList[it].dueDate).getTime())
+      && (isEmptyString(inputEndDate, true)
+        || EndDate >= new Date(itemList[it].dueDate).getTime())) {
       searchItemList.push(itemList[it]);
     }
   }
