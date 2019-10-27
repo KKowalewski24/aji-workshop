@@ -5,6 +5,7 @@
     <SearchMovie
         :properties="searchProperties"
         :searchItems="searchMovies"
+        :clearItems="clearInputs"
     />
     <MovieTable
         :jsonData="filteredJsonData"
@@ -45,13 +46,16 @@
     },
 
     methods: {
+      isFilled: function (msg) {
+        return msg !== "";
+      },
       isFilledInputs: function () {
         //IF INPUTS ARE EMPTY RETURN FALSE IF NOT RETURN TRUE
-        if (!(this.searchProperties.title === ""
-          && this.searchProperties.dateFrom === ""
-          && this.searchProperties.dateTo === ""
-          && this.searchProperties.cast === ""
-          && this.searchProperties.genres === "")) {
+        if (!(this.isFilled(this.searchProperties.title)
+          && this.isFilled(this.searchProperties.dateFrom)
+          && this.isFilled(this.searchProperties.dateTo)
+          && this.isFilled(this.searchProperties.cast)
+          && this.isFilled(this.searchProperties.genres))) {
           return true
         }
 
@@ -64,9 +68,9 @@
 
       isIncluded: function (arrayValue, inputValue) {
         return (_.includes(this.getLowerCaseValue(arrayValue),
-          this.getLowerCaseValue(inputValue)) || inputValue === "")
+          this.getLowerCaseValue(inputValue)) || !this.isFilled(inputValue))
       },
-
+      // ADD CHECKING DATE BETWEEN
       checkInputs: function (item) {
         if (this.isIncluded(item.title, this.searchProperties.title)
           && this.isIncluded(item.dateFrom, this.searchProperties.dateFrom)
@@ -93,7 +97,13 @@
 
         this.reRenderedKey += 1;
       },
-
+      clearInputs: function () {
+        this.searchProperties.title = "";
+        this.searchProperties.dateFrom = "";
+        this.searchProperties.dateTo = "";
+        this.searchProperties.cast = "";
+        this.searchProperties.genres = "";
+      }
     },
 
   }

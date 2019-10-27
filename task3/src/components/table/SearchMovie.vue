@@ -27,6 +27,9 @@
         <button v-on:click="searchItems()" class="btn mdb-color white-text m-0">
           Search
         </button>
+        <button v-on:click="clearItems()" class="btn mdb-color lighten-2 white-text m-0">
+          Clear
+        </button>
       </li>
     </div>
   </div>
@@ -37,7 +40,8 @@
     name: "SearchMovie",
     props: {
       properties: Object,
-      searchItems: Function
+      searchItems: Function,
+      clearItems: Function,
     }
   }
 </script>
