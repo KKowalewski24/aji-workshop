@@ -4,7 +4,7 @@
         :properties="searchProperties"
         :searchItems="searchMovies"
     />
-    <MovieTable :jsonData="filteredJsonData"/>
+    <MovieTable :jsonData="filteredJsonData" :key="reRenderKey"/>
   </div>
 </template>
 
@@ -30,15 +30,17 @@
           dateTo: "",
           cast: ""
         },
-        filteredJsonData: _.cloneDeep(this.fullJsonData)
+        filteredJsonData: _.cloneDeep(this.fullJsonData),
+        reRenderKey: 0
       }
     },
     methods: {
       searchMovies: function () {
-        if (!(this.searchProperties.title == ""
-          && this.searchProperties.dateFrom == ""
-          && this.searchProperties.dateTo == ""
-          && this.searchProperties.cast == "")) {
+        if (!(this.searchProperties.title === ""
+          && this.searchProperties.dateFrom === ""
+          && this.searchProperties.dateTo === ""
+          && this.searchProperties.cast === "")) {
+
           this.filteredJsonData = [
             {
               "title": "After Dark in Central Park",
@@ -48,6 +50,7 @@
             }
           ]
 
+          this.reRenderKey += 1;
         }
 
       }

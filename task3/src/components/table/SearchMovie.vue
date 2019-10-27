@@ -7,12 +7,12 @@
         </ul>
 
         <ul class="list-group-item">
-          <input type="text" v-model="properties.dateFrom" class="form-control"
+          <input type="number" v-model="properties.dateFrom" class="form-control"
                  placeholder="Production year from:"/>
         </ul>
 
         <ul class="list-group-item">
-          <input type="text" v-model="properties.dateTo" class="form-control"
+          <input type="number" v-model="properties.dateTo" class="form-control"
                  placeholder="Production year to:"/>
         </ul>
 

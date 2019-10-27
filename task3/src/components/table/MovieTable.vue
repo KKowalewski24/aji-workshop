@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table class="table mt-5 table-striped table-bordered">
+    <table class="table table-striped table-bordered mt-5">
       <thead class="mdb-color white-text">
         <tr class="text-center">
           <th>Title</th>
