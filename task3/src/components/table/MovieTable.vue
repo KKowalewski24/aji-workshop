@@ -20,9 +20,11 @@
         </tr>
       </tbody>
     </table>
-    <button class="btn btn-block mdb-color white-text m-0" v-on:click="expandTable()">
-      Load Next
-    </button>
+    <div v-if="isButtonVisible">
+      <button class="btn btn-block mdb-color white-text m-0" v-on:click="expandTable()">
+        Load Next
+      </button>
+    </div>
   </div>
 </template>
 
@@ -37,14 +39,18 @@
     },
     data() {
       let tableSize = INITIAL_TABLE_SIZE;
+      let isButtonVisible = true;
       if (this.jsonData.length < INITIAL_TABLE_SIZE) {
         tableSize = this.jsonData.length;
+        isButtonVisible = false;
       } else {
         tableSize = INITIAL_TABLE_SIZE;
+        isButtonVisible = true;
       }
 
       return {
-        tableSize
+        tableSize,
+        isButtonVisible
       }
     },
     methods: {

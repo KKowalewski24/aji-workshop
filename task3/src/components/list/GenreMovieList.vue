@@ -16,6 +16,8 @@
 <script>
   import _ from "lodash";
 
+  // const INITIAL_TABLE_SIZE = 0;
+
   export default {
     name: "GenreMovieList",
     props: {

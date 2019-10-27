@@ -20,6 +20,10 @@
           <input type="text" v-model="properties.cast" class="form-control" placeholder="Cast"/>
         </ul>
 
+        <ul class="list-group-item">
+          <input type="text" v-model="properties.genres" class="form-control" placeholder="Genre"/>
+        </ul>
+
         <button v-on:click="searchItems()" class="btn mdb-color white-text m-0">
           Search
         </button>

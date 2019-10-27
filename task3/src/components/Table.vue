@@ -1,5 +1,7 @@
 <template>
   <div>
+    <!-- OBJECT(searchProperties) IS BEING PASSED BECAUSE IT IS
+    PASSED BY REFERENCE - LIVE CHANGES -->
     <SearchMovie
         :properties="searchProperties"
         :searchItems="searchMovies"
@@ -36,7 +38,8 @@
           title: "",
           dateFrom: "",
           dateTo: "",
-          cast: ""
+          cast: "",
+          genres: "",
         },
       }
     },
@@ -47,7 +50,8 @@
         if (!(this.searchProperties.title === ""
           && this.searchProperties.dateFrom === ""
           && this.searchProperties.dateTo === ""
-          && this.searchProperties.cast === "")) {
+          && this.searchProperties.cast === ""
+          && this.searchProperties.genres === "")) {
           return true
         }
 
@@ -59,14 +63,16 @@
       },
 
       isIncluded: function (arrayValue, inputValue) {
-        return _.includes(this.getLowerCaseValue(arrayValue), this.getLowerCaseValue(inputValue))
+        return (_.includes(this.getLowerCaseValue(arrayValue),
+          this.getLowerCaseValue(inputValue)) || inputValue === "")
       },
 
       checkInputs: function (item) {
         if (this.isIncluded(item.title, this.searchProperties.title)
           && this.isIncluded(item.dateFrom, this.searchProperties.dateFrom)
           && this.isIncluded(item.dateTo, this.searchProperties.dateTo)
-          && this.isIncluded(item.cast, this.searchProperties.cast)) {
+          && this.isIncluded(_.flatten(item.cast), this.searchProperties.cast)
+          && this.isIncluded(_.flatten(item.genres), this.searchProperties.genres)) {
           return true;
         }
 
@@ -74,13 +80,18 @@
       },
 
       searchMovies: function () {
-        for (let it in this.fullJsonData) {
-          if (this.isFilledInputs() && this.checkInputs(this.fullJsonData[it])) {
-            alert(this.fullJsonData[it].title);
-
-            this.reRenderedKey += 1;
+        if (this.isFilledInputs()) {
+          for (let it in this.fullJsonData) {
+            if (this.checkInputs(this.fullJsonData[it])) {
+              this.filteredJsonData = [];
+              this.filteredJsonData.push(this.fullJsonData[it]);
+            }
           }
+        } else {
+          this.filteredJsonData = _.cloneDeep(this.fullJsonData);
         }
+
+        this.reRenderedKey += 1;
       },
 
     },
