@@ -6,3 +6,8 @@
 .margin-bottom-7 {
     margin-bottom: 7rem !important;
 }
+
+.main-color {
+    background-color: #59698d !important;
+    color: #fff;
+}
