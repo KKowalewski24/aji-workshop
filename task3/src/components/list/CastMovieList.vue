@@ -1,20 +1,24 @@
 <template>
   <div>
-    <div class="card">
+    <div class="card" v-for="(it,index) in castList" :key="index">
       <div class="card-header">
-        Featured
+        {{it}}
       </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Vestibulum at eros</li>
+
+      <ul class="list-group list-group-flush" v-for="(index,it) in listSize" :key="it">
+        <li class="list-group-item">ITERATOR</li>
       </ul>
+
     </div>
   </div>
 </template>
 
 <script>
   import _ from "lodash";
+
+  const BEGIN = 0;
+  const END = 99;
+  const INITIAL_LIST_SIZE = 10;
 
   export default {
     name: "CastMovieList",
@@ -25,12 +29,14 @@
 
     data() {
       return {
-        tableSize: 10,
-        castList: _.uniq(_.flatten(_.filter(_.map(_.slice(this.jsonData, 0, 99), "cast"), _.size)))
+        listSize: INITIAL_LIST_SIZE,
+        castList: _.slice(_.uniq(_.flatten(_.filter(
+          _.map(this.jsonData, "cast"), _.size))), BEGIN, END)
       }
     },
 
     methods: {},
+
   }
 </script>
 
