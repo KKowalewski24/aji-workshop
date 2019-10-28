@@ -25,9 +25,9 @@
 
     <div class="card my-4">
       <div class="card-body">
-        <h5 class="card-title">Chosen Items</h5>
+        <h5 class="card-title mb-5">Chosen Items</h5>
 
-        <table class="table table-striped table-bordered">
+        <table v-if="cart.length" class="table table-striped table-bordered">
           <thead>
             <tr>
               <th>Name</th>
@@ -41,18 +41,17 @@
               <td>{{it.unitPrice}}</td>
               <td>{{it.quantity}}</td>
             </tr>
-            <!--            <tr v-if="cart.length">-->
-            <!--              <td>-->
-            <!--                {{calculateTotalPrice(this.cart)}}-->
-            <!--              </td>-->
-            <!--            </tr>-->
-            <!--            <tr v-else>-->
-            <!--              <td class="empty-card">-->
-            <!--                Empty Cart-->
-            <!--              </td>-->
-            <!--            </tr>-->
+            <tr>
+              <td>
+                {{calculateTotalPrice(this.cart)}}
+              </td>
+            </tr>
           </tbody>
         </table>
+
+        <div v-else class="empty-card mb-5">
+          Empty Cart
+        </div>
 
       </div>
     </div>
@@ -87,17 +86,16 @@
             quantity: 1
           });
         }
-      }
+      },
+
+      calculateTotalPrice: function (cartItems) {
+        let totalPrice = 0;
+        cartItems.forEach(it => totalPrice += it.unitPrice + it.quantity);
+
+        return totalPrice;
+      },
     },
 
-    computed: {
-      // calculateTotalPrice: function (cartItems) {
-      //   let totalPrice = 0;
-      //   cartItems.forEach(it => totalPrice += it.unitPrice + it.quantity);
-      //
-      //   return totalPrice;
-      // }
-    }
   }
 </script>
 
@@ -114,5 +112,7 @@
 
   .empty-card {
     color: #ff3547;
+    background-color: lightgrey;
+    padding: 1rem;
   }
 </style>
