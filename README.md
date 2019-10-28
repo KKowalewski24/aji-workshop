@@ -10,12 +10,9 @@ Go to project settings -> Service Accounts -> Datebase Secrets and then copy sec
 
 Link to access datebase with read and write set to false -> DATEBASE_LINK + ".json" + "?auth=" + SECRET_KEY
 
+## Task 3 - Vue Film Website
+
 ## Vue Exercise
 
-#### Vue Store Basket
-
-#### Vue Schedule List
-
-#### Vue Weather Forecast 
-
-## Task 3 - Vue Film Website
+Container for sample projects from tutorials. 
+Contains: Vue Store Basket, Vue Schedule List, Vue Weather Forecast. 
