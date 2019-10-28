@@ -71,7 +71,7 @@ let addItem = () => {
   updateList();
 };
 
-/*------------------------ UPDATE LIST ------------------------*/
+/*------------------------ HELPER FUNCTION FOR UPDATE LIST ------------------------*/
 let deleteItem = (index) => {
   itemList.splice(index, 1);
   postJsonData();
@@ -92,6 +92,10 @@ let isEmptyString = (msg, jquery) => {
   return false;
 };
 
+let getTimeFromDate = (item) => {
+  return new Date(item.dueDate).getTime();
+};
+
 let checkSearchString = (pattern, item) => {
   if (isEmptyString(pattern, false)
     || item.title.includes(pattern)
@@ -102,21 +106,30 @@ let checkSearchString = (pattern, item) => {
   return false;
 };
 
+let checkDate = (item, startDate, endDate) => {
+  if ((isEmptyString(inputStartDate, true)
+    || startDate <= getTimeFromDate(item))
+    && (isEmptyString(inputEndDate, true)
+      || endDate >= getTimeFromDate(item))) {
+    return true;
+  }
+
+  return false;
+};
+
+/*------------------------ UPDATE LIST ------------------------*/
 let updateList = () => {
   let searchItemList = [];
   let pattern = inputSearch.val();
-  let StartDate = new Date(inputStartDate.val()).getTime();
-  let EndDate = new Date(inputEndDate.val()).getTime();
+  let startDate = new Date(inputStartDate.val()).getTime();
+  let endDate = new Date(inputEndDate.val()).getTime();
 
   /*----- jQuery VERSION OF REMOVING FIRST CHILD -----*/
   itemTable.empty();
 
   for (let it in itemList) {
     if (checkSearchString(pattern, itemList[it])
-      && (isEmptyString(inputStartDate, true)
-        || StartDate <= new Date(itemList[it].dueDate).getTime())
-      && (isEmptyString(inputEndDate, true)
-        || EndDate >= new Date(itemList[it].dueDate).getTime())) {
+      && checkDate(itemList[it], startDate, endDate)) {
       searchItemList.push(itemList[it]);
     }
   }
