@@ -12,13 +12,16 @@
 
   export default {
     name: "Navbar",
+
     components: {
       mdbNavbar,
       mdbNavbarBrand,
     },
+
     props: {
       msg: String
-    }
+    },
+
   }
 </script>
 

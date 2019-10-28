@@ -18,16 +18,19 @@
 
   export default {
     name: "CastMovieList",
+
     props: {
       jsonData: Array
     },
+
     data() {
       return {
         tableSize: 10,
         castList: _.uniq(_.flatten(_.filter(_.map(_.slice(this.jsonData, 0, 99), "cast"), _.size)))
       }
     },
-    methods: {}
+
+    methods: {},
   }
 </script>
 

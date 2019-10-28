@@ -9,10 +9,11 @@
 <script>
   export default {
     name: "Footer",
-    components: {},
+
     props: {
       msg: String
-    }
+    },
+
   }
 </script>
 

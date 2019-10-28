@@ -6,12 +6,12 @@
 
     <ul class="list-group-item">
       <input type="number" v-model="properties.dateFrom" class="form-control"
-             placeholder="Production year from:"/>
+             placeholder="Production year from:" min="1900" max="2100"/>
     </ul>
 
     <ul class="list-group-item">
       <input type="number" v-model="properties.dateTo" class="form-control"
-             placeholder="Production year to:"/>
+             placeholder="Production year to:" min="1900" max="2100"/>
     </ul>
 
     <ul class="list-group-item">
@@ -34,11 +34,13 @@
 <script>
   export default {
     name: "SearchMovie",
+
     props: {
       properties: Object,
       searchItems: Function,
       clearItems: Function,
-    }
+    },
+
   }
 </script>
 

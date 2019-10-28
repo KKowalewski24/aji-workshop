@@ -11,13 +11,16 @@
 
   export default {
     name: "List",
+
     components: {
       CastMovieList,
       GenreMovieList
     },
+
     props: {
       fullJsonData: Array
-    }
+    },
+
   }
 </script>
 

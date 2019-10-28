@@ -20,16 +20,20 @@
 
   export default {
     name: "GenreMovieList",
+
     props: {
       jsonData: Array
     },
+
     data() {
       return {
         tableSize: 10,
         genreList: _.uniq(_.flatten(_.filter(_.map(this.jsonData, "genres"), _.size)))
       }
     },
-    methods: {}
+
+    methods: {},
+
   }
 </script>
 

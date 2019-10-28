@@ -21,18 +21,21 @@
 
   export default {
     name: 'app',
+
     components: {
       List,
       Table,
       Navbar,
       Footer,
     },
+
     data() {
       return {
         // sample: samplejson,
         fullMoviesData: json
       }
-    }
+    },
+
   }
 </script>
 
