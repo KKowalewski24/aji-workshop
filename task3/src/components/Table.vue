@@ -1,15 +1,15 @@
 <template>
-  <div>
+  <div class="row px-1">
     <!-- OBJECT(searchProperties) IS BEING PASSED BECAUSE IT IS
     PASSED BY REFERENCE - LIVE CHANGES -->
-    <SearchMovie
-        :properties="searchProperties"
-        :searchItems="searchMovies"
-        :clearItems="clearInputs"
+    <SearchMovie class="col-md-3 mt-5 padding-x-1"
+                 :properties="searchProperties"
+                 :searchItems="searchMovies"
+                 :clearItems="clearInputs"
     />
-    <MovieTable
-        :jsonData="filteredJsonData"
-        :key="reRenderedKey"
+    <MovieTable class="col-md-9 mt-5 padding-x-1"
+                :jsonData="filteredJsonData"
+                :key="reRenderedKey"
     />
   </div>
 </template>
@@ -70,7 +70,7 @@
         return (_.includes(this.getLowerCaseValue(arrayValue),
           this.getLowerCaseValue(inputValue)) || !this.isFilled(inputValue))
       },
-      // ADD CHECKING DATE BETWEEN
+      //TODO ADD CHECKING DATE BETWEEN
       checkInputs: function (item) {
         if (this.isIncluded(item.title, this.searchProperties.title)
           && this.isIncluded(item.dateFrom, this.searchProperties.dateFrom)
@@ -110,5 +110,15 @@
 </script>
 
 <style scoped>
+  .padding-x-1 {
+    padding-left: 0;
+    padding-right: 0;
+  }
 
+  @media (min-width: 768px) {
+    .padding-x-1 {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+  }
 </style>

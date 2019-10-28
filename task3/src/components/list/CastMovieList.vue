@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-5 p-0">
+  <div>
     <div class="card">
       <div class="card-header">
         Featured

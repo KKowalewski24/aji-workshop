@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <GenreMovieList :jsonData="fullJsonData"/>
-    <CastMovieList :jsonData="fullJsonData"/>
+  <div class="row">
+    <GenreMovieList class="col-sm-6 mt-5 px-4" :jsonData="fullJsonData"/>
+    <CastMovieList class="col-sm-6 mt-5 px-4" :jsonData="fullJsonData"/>
   </div>
 </template>
 

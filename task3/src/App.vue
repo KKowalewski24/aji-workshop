@@ -2,12 +2,12 @@
   <div id="app">
     <Navbar msg="Film Website"/>
 
-    <div class="container">
+    <div class="container-fluid">
       <Table :fullJsonData="fullMoviesData"/>
       <List :fullJsonData="fullMoviesData"/>
     </div>
 
-    <Footer msg="Kamil Kowalewski Applications in Interpreted Languages"/>
+    <Footer class="mt-5" msg="Kamil Kowalewski Applications in Interpreted Languages"/>
   </div>
 </template>
 

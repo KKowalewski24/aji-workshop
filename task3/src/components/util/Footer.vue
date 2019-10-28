@@ -1,5 +1,5 @@
 <template>
-  <footer class="page-footer mdb-color font-small mt-4">
+  <footer class="page-footer mdb-color font-small">
     <div class="container-fluid footer-copyright text-center py-3">
       &copy; {{msg}}
     </div>
