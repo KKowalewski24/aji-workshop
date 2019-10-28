@@ -5,8 +5,8 @@
         {{it}}
       </div>
 
-      <ul class="list-group list-group-flush" v-for="(index,it) in listSize" :key="it">
-        <li class="list-group-item">ITERATOR</li>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{}}</li>
       </ul>
 
     </div>
@@ -28,14 +28,14 @@
     },
 
     data() {
+      let castList = _.slice(_.uniq(_.flatten(_.filter(
+        _.map(this.jsonData, "cast"), _.size))), BEGIN, END);
+
       return {
         listSize: INITIAL_LIST_SIZE,
-        castList: _.slice(_.uniq(_.flatten(_.filter(
-          _.map(this.jsonData, "cast"), _.size))), BEGIN, END)
+        castList,
       }
     },
-
-    methods: {},
 
   }
 </script>
