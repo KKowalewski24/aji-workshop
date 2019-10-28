@@ -84,10 +84,11 @@
       },
 
       searchMovies: function () {
+        this.filteredJsonData = [];
+
         if (this.isFilledInputs()) {
           for (let it in this.fullJsonData) {
             if (this.checkInputs(this.fullJsonData[it])) {
-              this.filteredJsonData = [];
               this.filteredJsonData.push(this.fullJsonData[it]);
             }
           }
