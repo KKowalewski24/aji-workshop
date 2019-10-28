@@ -69,11 +69,8 @@
         return false;
       },
 
-      //TODO ADD CHECKING DATE BETWEEN
       checkInputs: function (item) {
         if (this.isIncluded(item.title, this.searchProperties.title)
-          // && this.isIncluded(item.dateFrom, this.searchProperties.dateFrom)
-          // && this.isIncluded(item.dateTo, this.searchProperties.dateTo)
           && this.isBetween(item.year, this.searchProperties.dateFrom, this.searchProperties.dateTo)
           && this.isIncluded(_.flatten(item.cast), this.searchProperties.cast)
           && this.isIncluded(_.flatten(item.genres), this.searchProperties.genres)) {

@@ -20,6 +20,7 @@
         </tr>
       </tbody>
     </table>
+
     <div v-if="isButtonVisible">
       <button class="btn btn-block mdb-color white-text m-0" v-on:click="expandTable()">
         Load Next
@@ -33,13 +34,15 @@
 
   export default {
     name: "MovieTable",
-    components: {},
+
     props: {
       jsonData: Array,
     },
+
     data() {
       let tableSize = INITIAL_TABLE_SIZE;
       let isButtonVisible = true;
+
       if (this.jsonData.length < INITIAL_TABLE_SIZE) {
         tableSize = this.jsonData.length;
         isButtonVisible = false;
@@ -53,15 +56,19 @@
         isButtonVisible
       }
     },
+
     methods: {
       expandTable: function () {
-        if (this.jsonData.length + INITIAL_TABLE_SIZE < this.tableSize) {
+        if (this.jsonData.length + INITIAL_TABLE_SIZE <= this.tableSize) {
           this.tableSize = this.jsonData.length;
+          this.isButtonVisible = false;
         } else {
           this.tableSize += INITIAL_TABLE_SIZE;
+          this.isButtonVisible = true;
         }
       }
-    }
+    },
+
   }
 </script>
 
