@@ -66,5 +66,7 @@
 </script>
 
 <style scoped>
-
+  th {
+    padding: 0.5rem !important;
+  }
 </style>

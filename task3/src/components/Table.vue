@@ -2,12 +2,12 @@
   <div class="row px-1">
     <!-- OBJECT(searchProperties) IS BEING PASSED BECAUSE IT IS
     PASSED BY REFERENCE - LIVE CHANGES -->
-    <SearchMovie class="col-md-3 mt-5 padding-x-1"
+    <SearchMovie class="col-md-3 mt-5 padding-table"
                  :properties="searchProperties"
                  :searchItems="searchMovies"
                  :clearItems="clearInputs"
     />
-    <MovieTable class="col-md-9 mt-5 padding-x-1"
+    <MovieTable class="col-md-9 mt-5 px-2"
                 :jsonData="filteredJsonData"
                 :key="reRenderedKey"
     />
@@ -111,13 +111,20 @@
 </script>
 
 <style scoped>
-  .padding-x-1 {
-    padding-left: 0;
-    padding-right: 0;
+  .padding-table {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  @media (min-width: 576px) {
+    .padding-table {
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
   }
 
   @media (min-width: 768px) {
-    .padding-x-1 {
+    .padding-table {
       padding-left: 0.5rem;
       padding-right: 0.5rem;
     }
