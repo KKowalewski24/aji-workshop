@@ -12,7 +12,6 @@
       </ul>
 
     </div>
-
   </div>
 </template>
 
@@ -41,9 +40,8 @@
 
     mounted() {
       for (let it of this.genreList) {
-        this.titleList.push(_.filter(this.jsonData.slice(BEGIN_TITLE, END_TITLE), (o) => {
-          return _.includes(_.flatten(o.genres), it)
-        }))
+        this.titleList.push(_.filter(
+          this.jsonData.slice(BEGIN_TITLE, END_TITLE), (o) => _.includes(_.flatten(o.genres), it)))
       }
     },
 

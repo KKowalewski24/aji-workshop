@@ -12,7 +12,6 @@
 </template>
 
 <script>
-  // import samplejson from "./data/sample.json";
   import json from "./data/movies.json";
   import Navbar from "./components/util/Navbar";
   import Table from "./components/Table";
@@ -23,15 +22,14 @@
     name: 'app',
 
     components: {
-      List,
-      Table,
       Navbar,
+      Table,
+      List,
       Footer,
     },
 
     data() {
       return {
-        // sample: samplejson,
         fullMoviesData: json
       }
     },

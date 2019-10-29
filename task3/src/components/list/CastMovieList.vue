@@ -42,9 +42,8 @@
 
     mounted() {
       for (let it of this.castList) {
-        this.titleList.push(_.filter(this.jsonData.slice(BEGIN_TITLE, END_TITLE), (o) => {
-          return _.includes(_.flatten(o.cast), it)
-        }))
+        this.titleList.push(_.filter(
+          this.jsonData.slice(BEGIN_TITLE, END_TITLE), (o) => _.includes(_.flatten(o.cast), it)))
       }
     },
 

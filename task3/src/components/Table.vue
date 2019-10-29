@@ -2,15 +2,17 @@
   <div class="row px-1">
     <!-- OBJECT(searchProperties) IS BEING PASSED BECAUSE IT IS
     PASSED BY REFERENCE - LIVE CHANGES -->
-    <SearchMovie class="col-md-3 mt-5 padding-table"
-                 :properties="searchProperties"
-                 :searchItems="searchMovies"
-                 :clearItems="clearInputs"
+    <SearchMovie
+        class="col-md-3 mt-5 padding-table"
+        :properties="searchProperties"
+        :searchItems="searchMovies"
+        :clearItems="clearInputs"
     />
     <!-- :key IS BEST WAY TO FORCE COMPONENT TO RERENDER -->
-    <MovieTable class="col-md-9 mt-5 px-2"
-                :jsonData="filteredJsonData"
-                :key="reRenderedKey"
+    <MovieTable
+        class="col-md-9 mt-5 px-2"
+        :jsonData="filteredJsonData"
+        :key="reRenderedKey"
     />
   </div>
 </template>
