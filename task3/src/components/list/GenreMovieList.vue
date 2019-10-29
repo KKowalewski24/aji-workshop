@@ -19,8 +19,8 @@
 <script>
   import _ from "lodash";
 
-  const BEGIN = 0;
-  const END = 1000;
+  const BEGIN_TITLE = 0;
+  const END_TITLE = 1000;
   const INITIAL_LIST_SIZE = 10;
 
   export default {
@@ -30,17 +30,18 @@
       jsonData: Array
     },
 
-    data: function () {
+    data() {
       return {
         listSize: INITIAL_LIST_SIZE,
-        genreList: _.sortBy(_.uniq(_.flatten(_.filter(_.map(this.jsonData, "genres"), _.size)))),
+        genreList: _.sortBy(_.uniq(_.flatten(_.filter(
+          _.map(this.jsonData, "genres"), _.size)))),
         titleList: [],
       }
     },
 
     mounted() {
       for (let it of this.genreList) {
-        this.titleList.push(_.filter(this.jsonData.slice(BEGIN, END), function (o) {
+        this.titleList.push(_.filter(this.jsonData.slice(BEGIN_TITLE, END_TITLE), (o) => {
           return _.includes(_.flatten(o.genres), it)
         }))
       }
