@@ -25,6 +25,7 @@
     <button v-on:click="searchItems()" class="btn mdb-color white-text m-0">
       Search
     </button>
+
     <button v-on:click="clearItems()" class="btn mdb-color lighten-2 white-text m-0">
       Clear
     </button>
@@ -45,5 +46,8 @@
 </script>
 
 <style scoped>
-
+  ul {
+    padding-top: 1.15rem !important;
+    padding-bottom: 1.1rem !important;
+  }
 </style>
