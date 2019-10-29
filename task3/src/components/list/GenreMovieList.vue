@@ -6,7 +6,9 @@
       </div>
 
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"  v-for="it2 in x[index]" :key="it2">{{ it2.title }}</li>
+        <li class="list-group-item" v-for="(jt,jndex) in titleList[index]" :key="jndex">
+          {{jt.title}}
+        </li>
       </ul>
 
     </div>
@@ -17,6 +19,8 @@
 <script>
   import _ from "lodash";
 
+  const BEGIN = 0;
+  const END = 1000;
   const INITIAL_LIST_SIZE = 10;
 
   export default {
@@ -26,28 +30,22 @@
       jsonData: Array
     },
 
-    data: function() {
-
-
+    data: function () {
       return {
         listSize: INITIAL_LIST_SIZE,
-        genreList : [],
-        x : [],
-
+        genreList: _.sortBy(_.uniq(_.flatten(_.filter(_.map(this.jsonData, "genres"), _.size)))),
+        titleList: [],
       }
     },
-    
-    mounted() {
-      this.jsonData = this.jsonData.slice(0, 100)
-      // let genreList = _.map(this.jsonData, it => _.pick(it, "genres", "title"));
-      this.genreList = _.sortBy(_.uniq(_.flatten(_.filter(_.map(this.jsonData, "genres"), _.size))));
 
+    mounted() {
       for (let it of this.genreList) {
-        this.x.push(_.filter(this.jsonData, function (o) {
+        this.titleList.push(_.filter(this.jsonData.slice(BEGIN, END), function (o) {
           return _.includes(_.flatten(o.genres), it)
         }))
       }
     },
+
   }
 </script>
 
