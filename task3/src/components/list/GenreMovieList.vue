@@ -6,7 +6,7 @@
       </div>
 
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"></li>
+        <li class="list-group-item"  v-for="it2 in x[index]" :key="it2">{{ it2.title }}</li>
       </ul>
 
     </div>
@@ -26,22 +26,28 @@
       jsonData: Array
     },
 
-    data() {
-      // let genreList = _.map(this.jsonData, it => _.pick(it, "genres", "title"));
-      let genreList = _.sortBy(_.uniq(_.flatten(_.filter(_.map(this.jsonData, "genres"), _.size))));
+    data: function() {
 
-      // for (let it in genreList) {
-      //   alert(_.find(this.jsonData, function (o) {
-      //     return _.contains(_.flatten(o.genres), it)
-      //   }))
-      // }
 
       return {
         listSize: INITIAL_LIST_SIZE,
-        genreList,
+        genreList : [],
+        x : [],
+
       }
     },
+    
+    mounted() {
+      this.jsonData = this.jsonData.slice(0, 100)
+      // let genreList = _.map(this.jsonData, it => _.pick(it, "genres", "title"));
+      this.genreList = _.sortBy(_.uniq(_.flatten(_.filter(_.map(this.jsonData, "genres"), _.size))));
 
+      for (let it of this.genreList) {
+        this.x.push(_.filter(this.jsonData, function (o) {
+          return _.includes(_.flatten(o.genres), it)
+        }))
+      }
+    },
   }
 </script>
 
