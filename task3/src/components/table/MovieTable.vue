@@ -13,10 +13,10 @@
         <!--INDEX IS ONLY BECAUSE FIRST VALUE RECEIVES COUNTING
         FROM 1 AND SECOND VALUE IS COUNTED FROM 0-->
         <tr class="text-center" v-for="(index,it) in tableSize" :key="it">
-          <th>{{jsonData[it].title}}</th>
-          <th>{{jsonData[it].year}}</th>
-          <th>{{jsonData[it].cast.toString().split(",").join("\n")}}</th>
-          <th>{{jsonData[it].genres.toString().split(",").join("\n")}}</th>
+          <td>{{jsonData[it].title}}</td>
+          <td>{{jsonData[it].year}}</td>
+          <td>{{jsonData[it].cast.toString().split(",").join("\n")}}</td>
+          <td>{{jsonData[it].genres.toString().split(",").join("\n")}}</td>
         </tr>
       </tbody>
     </table>
@@ -73,7 +73,7 @@
 </script>
 
 <style scoped>
-  th {
+  th, td {
     padding: 0.5rem !important;
   }
 </style>
