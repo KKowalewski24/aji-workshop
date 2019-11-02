@@ -1,0 +1,16 @@
+{
+  "name": "node-exercise",
+  "version": "1.0.0",
+  "description": "node-exercise project",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -r esm index.js"
+  },
+  "author": "Kamil Kowalewski",
+  "license": "MIT",
+  "dependencies": {
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "nodemon": "^1.19.4"
+  }
+}
