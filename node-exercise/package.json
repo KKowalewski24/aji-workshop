@@ -2,13 +2,15 @@
   "name": "node-exercise",
   "version": "1.0.0",
   "description": "node-exercise project",
-  "main": "index.js",
+  "main": "src/routes/app.js",
   "scripts": {
-    "start": "nodemon -r esm index.js"
+    "start": "nodemon -r esm src/server.js"
   },
   "author": "Kamil Kowalewski",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "nodemon": "^1.19.4"
