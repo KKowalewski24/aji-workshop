@@ -17,7 +17,7 @@ const inputEndDate = $("#inputEndDate");
 let itemList = [];
 
 /*------------------------ GET | POST ------------------------*/
-let getJsonData = () => {
+const getJsonData = () => {
   $.ajax({
     url: FIREBASE_ACCESS_LINK,
     type: 'GET',
@@ -35,7 +35,7 @@ let getJsonData = () => {
   })
 };
 
-let postJsonData = () => {
+const postJsonData = () => {
   $.ajax({
     url: FIREBASE_ACCESS_LINK,
     type: 'PUT',
@@ -51,12 +51,12 @@ let postJsonData = () => {
 };
 
 /*------------------------ CLEAR ADD ITEM FORM ------------------------*/
-let clearInputs = (...elements) => {
+const clearInputs = (...elements) => {
   elements.forEach(it => $(it).val(""));
 };
 
 /*------------------------ ADD ITEM ------------------------*/
-let addItem = () => {
+const addItem = () => {
   let item = {
     title: inputTitle.val(),
     description: inputDescription.val(),
@@ -72,13 +72,13 @@ let addItem = () => {
 };
 
 /*------------------------ HELPER FUNCTION FOR UPDATE LIST ------------------------*/
-let deleteItem = (index) => {
+const deleteItem = (index) => {
   itemList.splice(index, 1);
   postJsonData();
   updateList();
 };
 
-let isEmptyString = (msg, jquery) => {
+const isEmptyString = (msg, jquery) => {
   if (jquery) {
     if ($(msg).val() === "") {
       return true;
@@ -89,14 +89,15 @@ let isEmptyString = (msg, jquery) => {
     }
 
   }
+  
   return false;
 };
 
-let getTimeFromDate = (item) => {
+const getTimeFromDate = (item) => {
   return new Date(item.dueDate).getTime();
 };
 
-let checkSearchString = (pattern, item) => {
+const checkSearchString = (pattern, item) => {
   if (isEmptyString(pattern, false)
     || item.title.includes(pattern)
     || item.description.includes(pattern)) {
@@ -106,7 +107,7 @@ let checkSearchString = (pattern, item) => {
   return false;
 };
 
-let checkDate = (item, startDate, endDate) => {
+const checkDate = (item, startDate, endDate) => {
   if ((isEmptyString(inputStartDate, true)
     || startDate <= getTimeFromDate(item))
     && (isEmptyString(inputEndDate, true)
@@ -118,7 +119,7 @@ let checkDate = (item, startDate, endDate) => {
 };
 
 /*------------------------ UPDATE LIST ------------------------*/
-let updateList = () => {
+const updateList = () => {
   let searchItemList = [];
   let pattern = inputSearch.val();
   let startDate = new Date(inputStartDate.val()).getTime();
